@@ -89,7 +89,7 @@ body.dark .nav-links a:hover {
     color: var(--primary-dark);
 }
 
-.theme-toggle, .lang-toggle {
+.theme-toggle {
     background: none;
     border: 2px solid currentColor;
     padding: 0.5rem 1rem;
@@ -100,13 +100,104 @@ body.dark .nav-links a:hover {
     color: var(--text-light);
 }
 
-body.dark .theme-toggle,
-body.dark .lang-toggle {
+body.dark .theme-toggle {
     color: var(--text-dark);
 }
 
-.theme-toggle:hover, .lang-toggle:hover {
+.theme-toggle:hover {
     transform: scale(1.05);
+}
+
+/* Language Toggle Switch */
+.lang-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 34px;
+}
+
+.lang-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lang-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+    border-radius: 34px;
+    overflow: visible;
+    border: 2px solid #ddd;
+}
+
+body.dark .lang-slider {
+    border-color: #555;
+}
+
+/* UK Flag (English) - default state */
+.lang-slider {
+    background-image: url('assets/uk-flag.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Turkish Flag when checked */
+input:checked + .lang-slider {
+    background-image: url('assets/tr-flag.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* White slider circle - moves when toggled */
+.lang-slider .slider-circle {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+input:checked + .lang-slider .slider-circle {
+    transform: translateX(36px);
+}
+
+.lang-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    min-width: 25px;
+    transition: all 0.3s;
+}
+
+body.dark .lang-label {
+    color: var(--text-dark);
+}
+
+.lang-label.active {
+    color: var(--primary-light);
+    transform: scale(1.1);
+}
+
+body.dark .lang-label.active {
+    color: var(--primary-dark);
 }
 
 /* Hero Section */

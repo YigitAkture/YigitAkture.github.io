@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-    <title data-en="InvesTracker - Track Your Investments" data-tr="InvesTracker - Yatırımlarınızı Takip Edin">InvesTracker - Track Your Investments</title>
+    <title data-en="InvesTracker - Track Your Investments" data-tr="InvesTracker - Yatırımlarınızı Takip Edin">
+        InvesTracker - Track Your Investments</title>
     <link rel="stylesheet" href="site.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -19,7 +22,16 @@
                 <div class="nav-links">
                     <a href="index.html" data-en="Home" data-tr="Ana Sayfa">Home</a>
                     <a href="policies.html" data-en="Policies" data-tr="Politikalar">Policies</a>
-                    <button class="lang-toggle" onclick="toggleLanguage()">EN / TR</button>
+                    <div class="lang-toggle-container">
+                        <span class="lang-label active" id="lang-en">EN</span>
+                        <label class="lang-switch">
+                            <input type="checkbox" id="langToggle" onchange="toggleLanguage()">
+                            <span class="lang-slider">
+                                <span class="slider-circle"></span>
+                            </span>
+                        </label>
+                        <span class="lang-label" id="lang-tr">TR</span>
+                    </div>
                     <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
                 </div>
             </nav>
@@ -31,11 +43,15 @@
         <div class="container">
             <img src="assets/app_icon.png" alt="InvesTracker Logo" class="app-icon">
             <h1 data-en="Track Your Investments" data-tr="Yatırımlarınızı Takip Edin">Track Your Investments</h1>
-            <p data-en="Monitor currencies, gold, and cryptocurrencies in real-time" data-tr="Döviz, altın ve kripto paraları gerçek zamanlı takip edin">Monitor currencies, gold, and cryptocurrencies in real-time</p>
+            <p data-en="Monitor currencies, gold, and cryptocurrencies in real-time"
+                data-tr="Döviz, altın ve kripto paraları gerçek zamanlı takip edin">Monitor currencies, gold, and
+                cryptocurrencies in real-time</p>
             <div class="download-buttons">
-                <a href="https://play.google.com/store/apps/details?id=com.yigit.investrackerapp" target="_blank" class="btn btn-primary">
+                <a href="https://play.google.com/store/apps/details?id=com.yigit.investrackerapp" target="_blank"
+                    class="btn btn-primary">
                     <span>📱</span>
-                    <span data-en="Download on Google Play" data-tr="Google Play'den İndir">Download on Google Play</span>
+                    <span data-en="Download on Google Play" data-tr="Google Play'den İndir">Download on Google
+                        Play</span>
                 </a>
             </div>
         </div>
@@ -49,32 +65,44 @@
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3 data-en="Asset Tracking" data-tr="Varlık Takibi">Asset Tracking</h3>
-                    <p data-en="Track all your currencies, gold, and crypto assets in one place" data-tr="Tüm döviz, altın ve kripto varlıklarınızı tek yerden takip edin">Track all your currencies, gold, and crypto assets in one place</p>
+                    <p data-en="Track all your currencies, gold, and crypto assets in one place"
+                        data-tr="Tüm döviz, altın ve kripto varlıklarınızı tek yerden takip edin">Track all your
+                        currencies, gold, and crypto assets in one place</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3 data-en="Real-time Rates" data-tr="Gerçek Zamanlı Kurlar">Real-time Rates</h3>
-                    <p data-en="Get up-to-date exchange rates for over 60 currencies and 40+ cryptocurrencies" data-tr="60'tan fazla döviz ve 40'tan fazla kripto para için güncel kurları alın">Get up-to-date exchange rates for over 60 currencies and 40+ cryptocurrencies</p>
+                    <p data-en="Get up-to-date exchange rates for over 60 currencies and 40+ cryptocurrencies"
+                        data-tr="60'tan fazla döviz ve 40'tan fazla kripto para için güncel kurları alın">Get up-to-date
+                        exchange rates for over 60 currencies and 40+ cryptocurrencies</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💳</div>
                     <h3 data-en="Debt Management" data-tr="Borç Yönetimi">Debt Management</h3>
-                    <p data-en="Keep track of your debts with notes and due dates" data-tr="Borçlarınızı notlar ve son ödeme tarihleriyle takip edin">Keep track of your debts with notes and due dates</p>
+                    <p data-en="Keep track of your debts with notes and due dates"
+                        data-tr="Borçlarınızı notlar ve son ödeme tarihleriyle takip edin">Keep track of your debts with
+                        notes and due dates</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔄</div>
                     <h3 data-en="Currency Converter" data-tr="Döviz Çevirici">Currency Converter</h3>
-                    <p data-en="Convert between currencies, gold, and cryptocurrencies instantly" data-tr="Döviz, altın ve kripto paralar arasında anında çeviri yapın">Convert between currencies, gold, and cryptocurrencies instantly</p>
+                    <p data-en="Convert between currencies, gold, and cryptocurrencies instantly"
+                        data-tr="Döviz, altın ve kripto paralar arasında anında çeviri yapın">Convert between
+                        currencies, gold, and cryptocurrencies instantly</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📈</div>
                     <h3 data-en="Portfolio Analysis" data-tr="Portföy Analizi">Portfolio Analysis</h3>
-                    <p data-en="Visualize your portfolio with beautiful charts and insights" data-tr="Portföyünüzü güzel grafikler ve analizlerle görselleştirin">Visualize your portfolio with beautiful charts and insights</p>
+                    <p data-en="Visualize your portfolio with beautiful charts and insights"
+                        data-tr="Portföyünüzü güzel grafikler ve analizlerle görselleştirin">Visualize your portfolio
+                        with beautiful charts and insights</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌙</div>
                     <h3 data-en="Dark Mode" data-tr="Karanlık Tema">Dark Mode</h3>
-                    <p data-en="Easy on the eyes with full dark mode support" data-tr="Tam karanlık tema desteğiyle gözleriniz yorulmaz">Easy on the eyes with full dark mode support</p>
+                    <p data-en="Easy on the eyes with full dark mode support"
+                        data-tr="Tam karanlık tema desteğiyle gözleriniz yorulmaz">Easy on the eyes with full dark mode
+                        support</p>
                 </div>
             </div>
         </div>
@@ -87,7 +115,8 @@
             <div class="screenshot-grid">
                 <div class="screenshot-card">
                     <img src="assets/home_display.png" alt="Portfolio View" class="screenshot-image">
-                    <div class="screenshot-label" data-en="Portfolio View" data-tr="Portföy Görünümü">Portfolio View</div>
+                    <div class="screenshot-label" data-en="Portfolio View" data-tr="Portföy Görünümü">Portfolio View
+                    </div>
                 </div>
                 <div class="screenshot-card">
                     <img src="assets/kur_takibi.png" alt="Market Rates" class="screenshot-image">
@@ -107,7 +136,10 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 data-en="About" data-tr="Hakkında">About</h3>
-                    <p data-en="InvesTracker helps you monitor and manage your financial investments across multiple asset types." data-tr="InvesTracker, birden fazla varlık türünde finansal yatırımlarınızı izlemenize ve yönetmenize yardımcı olur.">InvesTracker helps you monitor and manage your financial investments across multiple asset types.</p>
+                    <p data-en="InvesTracker helps you monitor and manage your financial investments across multiple asset types."
+                        data-tr="InvesTracker, birden fazla varlık türünde finansal yatırımlarınızı izlemenize ve yönetmenize yardımcı olur.">
+                        InvesTracker helps you monitor and manage your financial investments across multiple asset
+                        types.</p>
                 </div>
                 <div class="footer-section">
                     <h3 data-en="Quick Links" data-tr="Hızlı Bağlantılar">Quick Links</h3>
@@ -118,7 +150,8 @@
                     <h3 data-en="Contact" data-tr="İletişim">Contact</h3>
                     <div style="display: flex; flex-direction: row;">
                         <p data-en="Email:" data-tr="E-posta:" style="margin-right: 0.3rem;">Email:</p>
-                        <a href="mailto:investrackerapp@gmail.com" type="Email" target="_blank">investrackerapp@gmail.com</a>
+                        <a href="mailto:investrackerapp@gmail.com" type="Email"
+                            target="_blank">investrackerapp@gmail.com</a>
                     </div>
                     <div style="display: flex; flex-direction: row;">
                         <p data-en="Developer:" data-tr="Geliştirici:" style="margin-right: 0.3rem;">Developer:</p>
@@ -131,7 +164,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 InvesTracker. <span data-en="All rights reserved." data-tr="Tüm hakları saklıdır.">All rights reserved.</span></p>
+                <p>&copy; 2025 InvesTracker. <span data-en="All rights reserved." data-tr="Tüm hakları saklıdır.">All
+                        rights reserved.</span></p>
             </div>
         </div>
     </footer>
@@ -152,6 +186,21 @@
             currentLang = currentLang === 'en' ? 'tr' : 'en';
             updateLanguage();
             localStorage.setItem('language', currentLang);
+
+            // Update toggle switch and labels
+            const checkbox = document.getElementById('langToggle');
+            const enLabel = document.getElementById('lang-en');
+            const trLabel = document.getElementById('lang-tr');
+
+            if (currentLang === 'tr') {
+                checkbox.checked = true;
+                enLabel.classList.remove('active');
+                trLabel.classList.add('active');
+            } else {
+                checkbox.checked = false;
+                enLabel.classList.add('active');
+                trLabel.classList.remove('active');
+            }
         }
 
         function updateLanguage() {
@@ -175,8 +224,20 @@
             if (savedLang) {
                 currentLang = savedLang;
                 updateLanguage();
+
+                // Set initial toggle state
+                const checkbox = document.getElementById('langToggle');
+                const enLabel = document.getElementById('lang-en');
+                const trLabel = document.getElementById('lang-tr');
+
+                if (currentLang === 'tr') {
+                    checkbox.checked = true;
+                    enLabel.classList.remove('active');
+                    trLabel.classList.add('active');
+                }
             }
         });
     </script>
 </body>
+
 </html>
