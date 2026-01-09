@@ -37,6 +37,12 @@ function updateLanguage() {
         el.textContent = el.getAttribute(`data-${currentLang}`);
     });
 
+    // Update language-specific images
+    const langImages = document.querySelectorAll('[data-img-en][data-img-tr]');
+    langImages.forEach(img => {
+        img.src = img.getAttribute(`data-img-${currentLang}`);
+    });
+
     // Update policy content language sections (only on policies page)
     const langSections = document.querySelectorAll('.lang-section');
     if (langSections.length > 0) {
