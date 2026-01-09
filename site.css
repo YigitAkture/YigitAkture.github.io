@@ -147,7 +147,7 @@ body.dark .lang-slider {
 
 /* UK Flag (English) - default state */
 .lang-slider {
-    background-image: url('assets/uk-flag.png');
+    background-image: url('YigitAkture.github.io/assets/uk-flag.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -155,7 +155,7 @@ body.dark .lang-slider {
 
 /* Turkish Flag when checked */
 input:checked + .lang-slider {
-    background-image: url('assets/tr-flag.png');
+    background-image: url('YigitAkture.github.io/assets/tr-flag.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
