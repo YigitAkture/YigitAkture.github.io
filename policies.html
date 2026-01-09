@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policies - InvesTracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-light: #1B5448;
+            --primary-dark: #49C0FF;
+            --secondary-light: #FF7F3F;
+            --secondary-dark: #EC3B80;
+            --bg-light: #F3F3F3;
+            --bg-dark: #27283D;
+            --text-light: #333333;
+            --text-dark: #E6E6E6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        body.dark header {
+            background: #2D2D47;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        body.dark .logo {
+            color: var(--primary-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        body.dark .nav-links a:hover {
+            color: var(--primary-dark);
+        }
+
+        .theme-toggle, .lang-toggle {
+            background: none;
+            border: 2px solid currentColor;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        /* Policy Content */
+        .policy-wrapper {
+            padding: 2rem 0 4rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        body.dark .back-link {
+            color: var(--primary-dark);
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .policy-nav {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        body.dark .policy-nav {
+            background: #2D2D47;
+        }
+
+        .policy-nav h2 {
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        body.dark .policy-nav h2 {
+            color: var(--primary-dark);
+        }
+
+        .policy-tabs {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .policy-tab {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-light);
+            color: var(--primary-light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        body.dark .policy-tab {
+            background: #41415D;
+            border-color: var(--primary-dark);
+            color: var(--primary-dark);
+        }
+
+        .policy-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .policy-tab.active {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        body.dark .policy-tab.active {
+            background: var(--primary-dark);
+            color: #27283D;
+        }
+
+        .policy-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        body.dark .policy-content {
+            background: #2D2D47;
+        }
+
+        .policy-content.active {
+            display: block;
+        }
+
+        .policy-content h1 {
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        body.dark .policy-content h1 {
+            color: var(--primary-dark);
+        }
+
+        .policy-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-light);
+        }
+
+        body.dark .policy-content h2 {
+            color: var(--secondary-dark);
+        }
+
+        .policy-content p, .policy-content li {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .policy-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-content em {
+            display: block;
+            margin-top: 2rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .consent-notice {
+            background: linear-gradient(135deg, rgba(27, 84, 72, 0.1), rgba(255, 127, 63, 0.1));
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--primary-light);
+        }
+
+        body.dark .consent-notice {
+            background: linear-gradient(135deg, rgba(73, 192, 255, 0.1), rgba(236, 59, 128, 0.1));
+            border-left-color: var(--primary-dark);
+        }
+
+        .lang-section {
+            display: none;
+        }
+
+        .lang-section.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-light);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        body.dark footer {
+            background: #1a1a2e;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .policy-tabs {
+                flex-direction: column;
+            }
+
+            .policy-content {
+                padding: 1.5rem;
+            }
+
+            .policy-content h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <span>📊</span>
+                    <span>InvesTracker</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" data-en="Home" data-tr="Ana Sayfa">Home</a>
+                    <button class="lang-toggle" onclick="toggleLanguage()">EN / TR</button>
+                    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Policy Content -->
+    <div class="policy-wrapper">
+        <div class="container">
+            <a href="index.html" class="back-link">← <span data-en="Back to Home" data-tr="Ana Sayfaya Dön">Back to Home</span></a>
+            
+            <!-- Policy Navigation -->
+            <div class="policy-nav">
+                <h2 data-en="Legal Documents" data-tr="Yasal Belgeler">Legal Documents</h2>
+                <div class="policy-tabs">
+                    <button class="policy-tab active" onclick="showPolicy('privacy')" data-en="Privacy Policy" data-tr="Gizlilik Politikası">Privacy Policy</button>
+                    <button class="policy-tab" onclick="showPolicy('processing')" data-en="Data Processing Notice" data-tr="Aydınlatma Metni">Data Processing Notice</button>
+                    <button class="policy-tab" onclick="showPolicy('consent')" data-en="Consent Form" data-tr="Açık Rıza Metni">Consent Form</button>
+                </div>
+            </div>
+
+            <!-- Privacy Policy -->
+            <div id="privacy-policy" class="policy-content active">
+                <!-- English -->
+                <div class="lang-section lang-en active">
+                    <h1>Privacy Policy</h1>
+                    
+                    <p>At InvesTracker, we attach great importance to the privacy and security of our users' personal data. This Privacy Policy explains the principles regarding the collection, storage, use, and protection of personal data obtained through the mobile application. The application processes personal data such as first name, last name, phone number, password, and information on foreign currency, gold, cryptocurrency assets, and debts declared by users solely to provide financial tracking services.</p>
+                    
+                    <p>Personal data is securely stored by InvesTracker and is not used for any purpose other than account creation, operation of application functions, and ensuring service continuity. Data is not shared with any person, institution, or organization outside the InvesTracker team, nor is it transferred domestically or internationally. Data may only be shared with authorized public institutions or judicial authorities as required by law.</p>
+                    
+                    <p>InvesTracker applies all necessary technical and administrative measures to protect the confidentiality and integrity of data. Users may request account or data deletion at any time; all information will be permanently removed from the database upon such request. Updates to the Privacy Policy will be announced through the application and the most current version will always be accessible.</p>
+                    
+                    <em>Last updated: January 2026</em>
+                </div>
+
+                <!-- Turkish -->
+                <div class="lang-section lang-tr">
+                    <h1>Gizlilik Politikası</h1>
+                    
+                    <p>InvesTracker olarak kullanıcılarımızın kişisel verilerinin gizliliğine ve güvenliğine önem veriyoruz. Bu Gizlilik Politikası, mobil uygulama üzerinden elde edilen kişisel verilerin toplanması, saklanması, kullanılması ve korunmasına ilişkin esasları açıklamaktadır. Uygulama kapsamında ad, soyad, telefon numarası, şifre bilgisi ve kullanıcı tarafından beyan edilen döviz, altın, kripto varlık ve borç bilgileri yalnızca uygulamanın sunduğu finansal takip hizmetinin yerine getirilebilmesi amacıyla işlenmektedir.</p>
+                    
+                    <p>Kişisel verileriniz, InvesTracker tarafından güvenli sunucularda saklanmakta olup, kullanıcı hesabının oluşturulması, uygulama fonksiyonlarının işletilmesi ve hizmet sürekliliğinin sağlanması dışında herhangi bir amaçla kullanılmamaktadır. Verileriniz, InvesTracker ekibi haricinde hiçbir kişi, kurum veya kuruluşla paylaşılmamakta; yurt içinde veya yurt dışında aktarılmamaktadır. Yasal yükümlülükler gereği yalnızca yetkili kamu kurumlarının veya adli mercilerin talebi doğrultusunda veri paylaşımı yapılabilir.</p>
+                    
+                    <p>InvesTracker, teknik ve idari güvenlik tedbirleri kapsamında verilerin gizliliğini ve bütünlüğünü korumak amacıyla gerekli tüm önlemleri uygulamaktadır. Kullanıcılar diledikleri zaman hesaplarını ve verilerini silme talebinde bulunabilir; bu talep üzerine tüm bilgiler veri tabanından kalıcı olarak silinir. Gizlilik Politikasına ilişkin güncellemeler uygulama üzerinden duyurulacak olup, güncel metin her zaman erişilebilir şekilde sunulacaktır.</p>
+                    
+                    <em>Son güncelleme: Ocak 2026</em>
+                </div>
+            </div>
+
+            <!-- Data Processing Notice -->
+            <div id="processing-policy" class="policy-content">
+                <!-- English -->
+                <div class="lang-section lang-en active">
+                    <h1>Personal Data Processing Notice</h1>
+                    
+                    <p>This notice has been prepared by InvesTracker as the data controller in accordance with Article 10 of the Law on the Protection of Personal Data No. 6698 ("KVKK"). InvesTracker processes personal data within the scope of using the mobile application for account creation and management, providing financial tracking services, operating application functions, and ensuring service continuity. Within this context, personal data such as first name, last name, phone number, password, and the information on foreign currency, gold, cryptocurrency assets, and debts declared by the user through the application are processed to enable users to benefit from the services provided by the application.</p>
+                    
+                    <h2>Data Collection</h2>
+                    <p>Personal data is collected electronically and automatically via the mobile application during account creation and financial data entry. The processing of these data is based on Article 5/2(c) of KVKK, as directly related to the establishment or performance of a contract; Article 5/2(ç), for the data controller to fulfill its legal obligations; and Article 5/2(f), based on the legitimate interests of the data controller. No special categories of personal data are processed within the application.</p>
+                    
+                    <h2>Data Sharing and Transfer</h2>
+                    <p>The processed personal data is not shared with any third party outside the InvesTracker team, is not transferred domestically or internationally, and is stored only on secure servers provided by a service provider in Turkey. If required by law, data may be shared with relevant public authorities or judicial authorities upon request. Personal data is retained as long as the user account remains active; upon user request for account or data deletion, all personal and financial data is permanently removed from the database.</p>
+                    
+                    <h2>Your Rights</h2>
+                    <p>Under Article 11 of KVKK, you have the right to:</p>
+                    <ul>
+                        <li>Learn whether your personal data is processed</li>
+                        <li>Request information if it has been processed</li>
+                        <li>Understand whether it is used appropriately</li>
+                        <li>Know the third parties to whom your data is transferred</li>
+                        <li>Request correction or deletion of your data</li>
+                        <li>Request restriction of processing</li>
+                        <li>Object to automatic system analyses that may result in negative consequences for you</li>
+                    </ul>
+                    
+                    <p>You can submit these requests via <strong>investrackerapp@gmail.com</strong> in accordance with the Procedures and Principles for Applying to the Data Controller.</p>
+                    
+                    <div class="consent-notice">
+                        <p><strong>I have read and been informed about the Personal Data Processing Notice prepared by InvesTracker.</strong></p>
+                    </div>
+                </div>
+
+                <!-- Turkish -->
+                <div class="lang-section lang-tr">
+                    <h1>Kişisel Verilerin İşlenmesi Aydınlatma Metni</h1>
+                    
+                    <p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanununun ("KVKK") 10 uncu maddesi uyarınca veri sorumlusu sıfatıyla InvesTracker tarafından hazırlanmıştır. InvesTracker, mobil uygulamanın kullanımı kapsamında kullanıcı hesaplarının oluşturulması ve yönetilmesi, finansal takip hizmetinin sunulması, uygulama fonksiyonlarının işletilmesi ve hizmet sürekliliğinin sağlanması amacıyla kişisel veri işlemektedir. Bu kapsamda ad, soyad, telefon numarası, şifre bilgisi ile kullanıcı tarafından uygulama üzerinden beyan edilen döviz, altın, kripto varlık ve borç bilgileri, uygulamanın sağladığı hizmetlerden yararlanılabilmesi için işlenen kişisel verilerdir.</p>
+                    
+                    <h2>Veri Toplama</h2>
+                    <p>Kişisel veriler, mobil uygulama üzerinden elektronik ortamda otomatik yollarla elde edilmekte olup, kullanıcı hesabı oluşturma ve finansal veri girişleri sırasında işlenmektedir. Söz konusu veriler; KVKK m.5/2(c) uyarınca sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması, KVKK m.5/2(ç) uyarınca veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi ve KVKK m.5/2(f) uyarınca veri sorumlusunun meşru menfaatleri kapsamında işlenmektedir. Uygulama kapsamında herhangi bir özel nitelikli kişisel veri işlenmemektedir.</p>
+                    
+                    <h2>Veri Paylaşımı ve Aktarımı</h2>
+                    <p>İşlenen kişisel veriler, InvesTracker ekibi dışında hiçbir üçüncü taraf ile paylaşılmamakta, yurt içi veya yurt dışına aktarılmamakta ve yalnızca Türkiye'de bulunan hizmet sağlayıcısı üzerinden temin edilen güvenli sunucularda saklanmaktadır. Mevzuatın gerektirmesi hâlinde, ilgili kamu kurum ve kuruluşları ile adli makamların talebi doğrultusunda veri paylaşımı yapılabilir. Kişisel veriler, kullanıcı hesabı aktif olduğu sürece saklanmakta; kullanıcı tarafından hesap veya veri silme talebinde bulunulması hâlinde tüm kişisel bilgiler ve finansal veriler veri tabanından kalıcı olarak silinmektedir.</p>
+                    
+                    <h2>Haklarınız</h2>
+                    <p>KVKK'nın 11 inci maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
+                    <ul>
+                        <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+                        <li>İşlenmişse bilgi talep etme</li>
+                        <li>Amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+                        <li>Verilerinizin aktarıldığı üçüncü kişileri bilme</li>
+                        <li>Verilerinizin düzeltilmesini veya silinmesini isteme</li>
+                        <li>İşlemenin kısıtlanmasını talep etme</li>
+                        <li>Otomatik sistemlerce yapılan analizlere itiraz etme</li>
+                    </ul>
+                    
+                    <p>Bu kapsamda taleplerinizi Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ'e uygun şekilde <strong>investrackerapp@gmail.com</strong> üzerinden iletebilirsiniz.</p>
+                    
+                    <div class="consent-notice">
+                        <p><strong>InvesTracker tarafından hazırlanan Kişisel Verilerin İşlenmesi Aydınlatma Metnini okudum, bilgi edindim.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consent Form -->
+            <div id="consent-policy" class="policy-content">
+                <!-- English -->
+                <div class="lang-section lang-en active">
+                    <h1>Consent Form</h1>
+                    
+                    <p>By using the services provided by InvesTracker, the information you declare through the mobile application regarding foreign currency, gold, cryptocurrency assets, and debts will be processed to enable the financial tracking functions. This information is entered by you and is used solely to provide the services within the application. No special categories of personal data are processed within the application.</p>
+                    
+                    <h2>Data Processing Basis</h2>
+                    <p>Your personal data related to account creation and the operation of services is processed based on the conditions stated in KVKK, and your explicit consent is required for the storage of financial data within the application. These data are stored only in InvesTracker systems, are not shared with third parties, and are kept on secure servers located in Turkey. Upon a request for account or data deletion, all your financial data will be permanently erased.</p>
+                    
+                    <h2>Consent Validity and Withdrawal</h2>
+                    <p>The consent remains valid as long as you continue to use the application. You may withdraw your consent at any time by contacting us at <strong>investrackerapp@gmail.com</strong>. Upon withdrawal of consent, financial data processing will cease and all related data will be deleted from our systems.</p>
+                    
+                    <div class="consent-notice">
+                        <p><strong>Important Notice:</strong> By continuing to use the InvesTracker application, you acknowledge that you have read, understood, and consent to the processing of your financial data as described in this Consent Form.</p>
+                    </div>
+                </div>
+
+                <!-- Turkish -->
+                <div class="lang-section lang-tr">
+                    <h1>Açık Rıza Metni</h1>
+                    
+                    <p>InvesTracker tarafından sunulan hizmetlerden yararlanmanız kapsamında, mobil uygulama üzerinden beyan ettiğiniz döviz, altın, kripto varlık ve borç bilgileriniz, finansal takip fonksiyonunun yerine getirilmesi amacıyla işlenmektedir. Bu veriler, tarafınızca uygulamaya girilen ve yalnızca hizmetin sunumuna yönelik kullanılabilen bilgilerdir. Uygulama kapsamında özel nitelikli kişisel veri işlenmemektedir.</p>
+                    
+                    <h2>Veri İşleme Temeli</h2>
+                    <p>Kullanıcı hesabınızın oluşturulmasına ve uygulama hizmetlerinin yürütülmesine ilişkin kişisel verileriniz, KVKK'da belirtilen işleme şartlarına dayanarak işlenmekte olup, finansal veri niteliğindeki bilgilerinizin uygulama kapsamında tutulmasına açık rızanızın bulunması gerekmektedir. Söz konusu verileriniz yalnızca InvesTracker sistemlerinde saklanmakta, üçüncü kişilere aktarılmamakta ve yalnızca Türkiye'deki güvenli sunucularda depolanmaktadır. Hesap veya veri silme talebinde bulunmanız hâlinde tüm finansal verileriniz kalıcı olarak silinir.</p>
+                    
+                    <h2>Rızanın Geçerliliği ve Geri Çekilmesi</h2>
+                    <p>Açık rıza onayı, uygulamayı kullanmaya devam ettiğiniz sürece geçerli olup, dilediğiniz zaman <strong>investrackerapp@gmail.com</strong> üzerinden tarafımıza ulaşıp geri çekebilirsiniz. Açık rızanızı geri çekmeniz halinde finansal veri işleme faaliyetleri durdurulacak ve gerekli tüm verileriniz sistemlerimizden silinecektir.</p>
+                    
+                    <div class="consent-notice">
+                        <p><strong>Önemli Uyarı:</strong> InvesTracker uygulamasını kullanmaya devam ederek, bu Açık Rıza Metninde açıklanan şekilde finansal verilerinizin işlenmesini okuduğunuzu, anladığınızı ve kabul ettiğinizi beyan edersiniz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-en="About" data-tr="Hakkında">About</h3>
+                    <p data-en="InvesTracker helps you monitor and manage your financial investments across multiple asset types." data-tr="InvesTracker, birden fazla varlık türünde finansal yatırımlarınızı izlemenize ve yönetmenize yardımcı olur.">InvesTracker helps you monitor and manage your financial investments across multiple asset types.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-en="Quick Links" data-tr="Hızlı Bağlantılar">Quick Links</h3>
+                    <a href="index.html" data-en="Home" data-tr="Ana Sayfa">Home</a>
+                    <a href="policies.html" data-en="Policies" data-tr="Politikalar">Policies</a>
+                </div>
+                <div class="footer-section">
+                    <h3 data-en="Contact" data-tr="İletişim">Contact</h3>
+                    <div style="display: flex; flex-direction: row;">
+                        <p data-en="Email:" data-tr="E-posta:" style="margin-right: 0.3rem;">Email:</p>
+                        <a href="mailto:investrackerapp@gmail.com" type="Email" target="_blank">investrackerapp@gmail.com</a>
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <p data-en="Developer:" data-tr="Geliştirici:" style="margin-right: 0.3rem;">Developer:</p>
+                        <a href="https://github.com/YigitAkture" target="_blank">Yiğit Aktüre</a>
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <p data-en="Designer:" data-tr="Tasarımcı:" style="margin-right: 0.3rem;">Designer:</p>
+                        <a href="https://github.com/NisaDost" target="_blank">Nisa Dost</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 InvesTracker. <span data-en="All rights reserved." data-tr="Tüm hakları saklıdır.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+        let isDark = false;
+        let currentPolicy = 'privacy';
+
+        // Theme Toggle
+        function toggleTheme() {
+            isDark = !isDark;
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Language Toggle
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'tr' : 'en';
+            updateLanguage();
+            localStorage.setItem('language', currentLang);
+        }
+
+        function updateLanguage() {
+            // Update UI elements
+            const elements = document.querySelectorAll('[data-en][data-tr]');
+            elements.forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+
+            // Update policy content
+            document.querySelectorAll('.lang-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll(`.lang-${currentLang}`).forEach(section => {
+                section.classList.add('active');
+            });
+        }
+
+        // Policy Tab Navigation
+        function showPolicy(policyType) {
+            currentPolicy = policyType;
+            
+            // Update tabs
+            document.querySelectorAll('.policy-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.policy-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${policyType}-policy`).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            // Load saved preferences
+            const savedTheme = localStorage.getItem('theme');
+            const savedLang = localStorage.getItem('language');
+
+            if (savedTheme === 'dark') {
+                isDark = true;
+                document.body.classList.add('dark');
+            }
+
+            if (savedLang) {
+                currentLang = savedLang;
+                updateLanguage();
+            }
+        });
+    </script>
+</body>
+</html>

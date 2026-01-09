@@ -234,6 +234,19 @@
         }
 
         /* Screenshots Section */
+        .screenshot-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot-label {
+            margin-top: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
         .screenshots {
             padding: 4rem 0;
         }
@@ -313,59 +326,6 @@
             opacity: 0.8;
         }
 
-        /* Privacy Policy Page */
-        .privacy-content {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        body.dark .privacy-content {
-            background: #2D2D47;
-        }
-
-        .privacy-content h1 {
-            margin-bottom: 2rem;
-            color: var(--primary-light);
-        }
-
-        body.dark .privacy-content h1 {
-            color: var(--primary-dark);
-        }
-
-        .privacy-content h2 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .privacy-content p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        body.dark .back-link {
-            color: var(--primary-dark);
-        }
-
-        .page-content {
-            display: none;
-        }
-
-        .page-content.active {
-            display: block;
-        }
-
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -392,8 +352,8 @@
                     <span>InvesTracker</span>
                 </div>
                 <div class="nav-links">
-                    <a href="#" onclick="showPage('home')" data-en="Home" data-tr="Ana Sayfa">Home</a>
-                    <a href="#" onclick="showPage('privacy')" data-en="Privacy Policy" data-tr="Gizlilik Politikası">Privacy Policy</a>
+                    <a href="index.html" data-en="Home" data-tr="Ana Sayfa">Home</a>
+                    <a href="policies.html" data-en="Policies" data-tr="Politikalar">Policies</a>
                     <button class="lang-toggle" onclick="toggleLanguage()">EN / TR</button>
                     <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
                 </div>
@@ -401,187 +361,80 @@
         </div>
     </header>
 
-    <!-- Home Page -->
-    <div id="home-page" class="page-content active">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <img src="https://via.placeholder.com/150" alt="InvesTracker Logo" class="app-icon">
-                <h1 data-en="Track Your Investments" data-tr="Yatırımlarınızı Takip Edin">Track Your Investments</h1>
-                <p data-en="Monitor currencies, gold, and cryptocurrencies in real-time" data-tr="Döviz, altın ve kripto paraları gerçek zamanlı takip edin">Monitor currencies, gold, and cryptocurrencies in real-time</p>
-                <div class="download-buttons">
-                    <a href="#" class="btn btn-primary">
-                        <span>📱</span>
-                        <span data-en="Download on Google Play" data-tr="Google Play'den İndir">Download on Google Play</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features">
-            <div class="container">
-                <h2 data-en="Features" data-tr="Özellikler">Features</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">💰</div>
-                        <h3 data-en="Asset Tracking" data-tr="Varlık Takibi">Asset Tracking</h3>
-                        <p data-en="Track all your currencies, gold, and crypto assets in one place" data-tr="Tüm döviz, altın ve kripto varlıklarınızı tek yerden takip edin">Track all your currencies, gold, and crypto assets in one place</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3 data-en="Real-time Rates" data-tr="Gerçek Zamanlı Kurlar">Real-time Rates</h3>
-                        <p data-en="Get up-to-date exchange rates for over 60 currencies and 40+ cryptocurrencies" data-tr="60'tan fazla döviz ve 40'tan fazla kripto para için güncel kurları alın">Get up-to-date exchange rates for over 60 currencies and 40+ cryptocurrencies</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💳</div>
-                        <h3 data-en="Debt Management" data-tr="Borç Yönetimi">Debt Management</h3>
-                        <p data-en="Keep track of your debts with notes and due dates" data-tr="Borçlarınızı notlar ve son ödeme tarihleriyle takip edin">Keep track of your debts with notes and due dates</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
-                        <h3 data-en="Currency Converter" data-tr="Döviz Çevirici">Currency Converter</h3>
-                        <p data-en="Convert between currencies, gold, and cryptocurrencies instantly" data-tr="Döviz, altın ve kripto paralar arasında anında çeviri yapın">Convert between currencies, gold, and cryptocurrencies instantly</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h3 data-en="Portfolio Analysis" data-tr="Portföy Analizi">Portfolio Analysis</h3>
-                        <p data-en="Visualize your portfolio with beautiful charts and insights" data-tr="Portföyünüzü güzel grafikler ve analizlerle görselleştirin">Visualize your portfolio with beautiful charts and insights</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🌙</div>
-                        <h3 data-en="Dark Mode" data-tr="Karanlık Tema">Dark Mode</h3>
-                        <p data-en="Easy on the eyes with full dark mode support" data-tr="Tam karanlık tema desteğiyle gözleriniz yorulmaz">Easy on the eyes with full dark mode support</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Screenshots Section -->
-        <section class="screenshots">
-            <div class="container">
-                <h2 data-en="App Screenshots" data-tr="Uygulama Ekran Görüntüleri">App Screenshots</h2>
-                <div class="screenshot-grid">
-                    <div class="screenshot-card">
-                        <div class="screenshot-placeholder" data-en="Portfolio View" data-tr="Portföy Görünümü">Portfolio View</div>
-                    </div>
-                    <div class="screenshot-card">
-                        <div class="screenshot-placeholder" data-en="Market Rates" data-tr="Piyasa Kurları">Market Rates</div>
-                    </div>
-                    <div class="screenshot-card">
-                        <div class="screenshot-placeholder" data-en="Converter" data-tr="Çevirici">Converter</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Privacy Policy Page -->
-    <div id="privacy-page" class="page-content">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="privacy-content">
-                <a href="#" onclick="showPage('home')" class="back-link">← <span data-en="Back to Home" data-tr="Ana Sayfaya Dön">Back to Home</span></a>
-                
-                <!-- English Privacy Policy -->
-                <div id="privacy-en" class="privacy-lang active">
-                    <h1>Privacy Policy</h1>
-                    
-                    <h2>1. Introduction</h2>
-                    <p>At InvesTracker, we prioritize the privacy and security of users' personal data. This Privacy Policy explains how data collected through the mobile application is stored, processed, used, and protected.</p>
-                    
-                    <h2>2. Data We Collect</h2>
-                    <p>The application processes personal information such as:</p>
-                    <ul>
-                        <li>Name and surname</li>
-                        <li>Email address</li>
-                        <li>Password (encrypted)</li>
-                        <li>User-declared financial data (foreign currency, gold, cryptocurrency assets, and debt information)</li>
-                    </ul>
-                    
-                    <h2>3. How We Use Your Data</h2>
-                    <p>Data is securely stored and used solely for:</p>
-                    <ul>
-                        <li>Account creation and authentication</li>
-                        <li>Application functionality and financial tracking services</li>
-                        <li>Service continuity and improvement</li>
-                    </ul>
-                    
-                    <h2>4. Data Storage and Security</h2>
-                    <p>All data is stored on secure servers located in Turkey. We implement industry-standard security measures to protect your information. Data is not shared with third parties nor transferred domestically or internationally, except when required by law.</p>
-                    
-                    <h2>5. Data Retention and Deletion</h2>
-                    <p>Data is retained as long as your account is active. Users may request account or data deletion at any time, and all data will be permanently erased upon such request.</p>
-                    
-                    <h2>6. Your Rights</h2>
-                    <p>Under applicable data protection laws, you have the right to:</p>
-                    <ul>
-                        <li>Request information about your data</li>
-                        <li>Request correction of inaccurate data</li>
-                        <li>Request deletion of your data</li>
-                        <li>Request restriction of data processing</li>
-                    </ul>
-                    
-                    <h2>7. Contact Us</h2>
-                    <p>For any questions or requests regarding your data, please contact us at:</p>
-                    <p><strong>Email:</strong> investrackerapp@gmail.com</p>
-                    
-                    <h2>8. Updates to This Policy</h2>
-                    <p>We may update this Privacy Policy from time to time. Changes will be announced through the application.</p>
-                    
-                    <p><em>Last updated: January 2025</em></p>
-                </div>
+            <img src="assets/app_icon.png" alt="InvesTracker Logo" class="app-icon">
+            <h1 data-en="Track Your Investments" data-tr="Yatırımlarınızı Takip Edin">Track Your Investments</h1>
+            <p data-en="Monitor currencies, gold, and cryptocurrencies in real-time" data-tr="Döviz, altın ve kripto paraları gerçek zamanlı takip edin">Monitor currencies, gold, and cryptocurrencies in real-time</p>
+            <div class="download-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.yigit.investrackerapp" target="_blank" class="btn btn-primary">
+                    <span>📱</span>
+                    <span data-en="Download on Google Play" data-tr="Google Play'den İndir">Download on Google Play</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-                <!-- Turkish Privacy Policy -->
-                <div id="privacy-tr" class="privacy-lang" style="display: none;">
-                    <h1>Gizlilik Politikası</h1>
-                    
-                    <h2>1. Giriş</h2>
-                    <p>InvesTracker olarak kullanıcılarımızın kişisel verilerinin gizliliğine ve güvenliğine öncelik veriyoruz. Bu Gizlilik Politikası, mobil uygulamada toplanan verilerin nasıl saklandığını, işlendiğini, kullanıldığını ve korunduğunu açıklar.</p>
-                    
-                    <h2>2. Topladığımız Veriler</h2>
-                    <p>Uygulama aşağıdaki kişisel bilgileri işlemektedir:</p>
-                    <ul>
-                        <li>Ad ve soyad</li>
-                        <li>E-posta adresi</li>
-                        <li>Şifre (şifrelenmiş)</li>
-                        <li>Kullanıcı tarafından beyan edilen finansal veriler (döviz, altın, kripto para varlıkları ve borç bilgileri)</li>
-                    </ul>
-                    
-                    <h2>3. Verilerinizi Nasıl Kullanıyoruz</h2>
-                    <p>Veriler güvenli bir şekilde saklanır ve yalnızca şu amaçlarla kullanılır:</p>
-                    <ul>
-                        <li>Hesap oluşturma ve kimlik doğrulama</li>
-                        <li>Uygulama işlevselliği ve finansal takip hizmetleri</li>
-                        <li>Hizmet sürekliliği ve iyileştirme</li>
-                    </ul>
-                    
-                    <h2>4. Veri Depolama ve Güvenlik</h2>
-                    <p>Tüm veriler Türkiye'de bulunan güvenli sunucularda saklanmaktadır. Bilgilerinizi korumak için endüstri standardı güvenlik önlemleri uyguluyoruz. Veriler, yasal zorunluluk olmadıkça üçüncü taraflarla paylaşılmamakta veya yurt içi/yurt dışına aktarılmamaktadır.</p>
-                    
-                    <h2>5. Veri Saklama ve Silme</h2>
-                    <p>Veriler, hesabınız aktif olduğu sürece saklanır. Kullanıcılar istedikleri zaman hesap veya veri silme talebinde bulunabilir ve bu talep üzerine tüm veriler kalıcı olarak silinir.</p>
-                    
-                    <h2>6. Haklarınız</h2>
-                    <p>Yürürlükteki veri koruma yasaları kapsamında şu haklara sahipsiniz:</p>
-                    <ul>
-                        <li>Verileriniz hakkında bilgi talep etme</li>
-                        <li>Hatalı verilerin düzeltilmesini talep etme</li>
-                        <li>Verilerinizin silinmesini talep etme</li>
-                        <li>Veri işlemenin kısıtlanmasını talep etme</li>
-                    </ul>
-                    
-                    <h2>7. İletişim</h2>
-                    <p>Verilerinizle ilgili herhangi bir soru veya talebiniz için lütfen bizimle iletişime geçin:</p>
-                    <p><strong>E-posta:</strong> investrackerapp@gmail.com</p>
-                    
-                    <h2>8. Politika Güncellemeleri</h2>
-                    <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklikler uygulama üzerinden duyurulacaktır.</p>
-                    
-                    <p><em>Son güncelleme: Ocak 2025</em></p>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 data-en="Features" data-tr="Özellikler">Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 data-en="Asset Tracking" data-tr="Varlık Takibi">Asset Tracking</h3>
+                    <p data-en="Track all your currencies, gold, and crypto assets in one place" data-tr="Tüm döviz, altın ve kripto varlıklarınızı tek yerden takip edin">Track all your currencies, gold, and crypto assets in one place</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 data-en="Real-time Rates" data-tr="Gerçek Zamanlı Kurlar">Real-time Rates</h3>
+                    <p data-en="Get up-to-date exchange rates for over 60 currencies and 40+ cryptocurrencies" data-tr="60'tan fazla döviz ve 40'tan fazla kripto para için güncel kurları alın">Get up-to-date exchange rates for over 60 currencies and 40+ cryptocurrencies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3 data-en="Debt Management" data-tr="Borç Yönetimi">Debt Management</h3>
+                    <p data-en="Keep track of your debts with notes and due dates" data-tr="Borçlarınızı notlar ve son ödeme tarihleriyle takip edin">Keep track of your debts with notes and due dates</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 data-en="Currency Converter" data-tr="Döviz Çevirici">Currency Converter</h3>
+                    <p data-en="Convert between currencies, gold, and cryptocurrencies instantly" data-tr="Döviz, altın ve kripto paralar arasında anında çeviri yapın">Convert between currencies, gold, and cryptocurrencies instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 data-en="Portfolio Analysis" data-tr="Portföy Analizi">Portfolio Analysis</h3>
+                    <p data-en="Visualize your portfolio with beautiful charts and insights" data-tr="Portföyünüzü güzel grafikler ve analizlerle görselleştirin">Visualize your portfolio with beautiful charts and insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3 data-en="Dark Mode" data-tr="Karanlık Tema">Dark Mode</h3>
+                    <p data-en="Easy on the eyes with full dark mode support" data-tr="Tam karanlık tema desteğiyle gözleriniz yorulmaz">Easy on the eyes with full dark mode support</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 data-en="App Screenshots" data-tr="Uygulama Ekran Görüntüleri">App Screenshots</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-card">
+                    <img src="assets/home_display.png" alt="Portfolio View" class="screenshot-image">
+                    <div class="screenshot-label" data-en="Portfolio View" data-tr="Portföy Görünümü">Portfolio View</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="assets/kur_takibi.png" alt="Market Rates" class="screenshot-image">
+                    <div class="screenshot-label" data-en="Market Rates" data-tr="Piyasa Kurları">Market Rates</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="assets/kur_cevirici.png" alt="Converter" class="screenshot-image">
+                    <div class="screenshot-label" data-en="Converter" data-tr="Çevirici">Converter</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -593,14 +446,23 @@
                 </div>
                 <div class="footer-section">
                     <h3 data-en="Quick Links" data-tr="Hızlı Bağlantılar">Quick Links</h3>
-                    <a href="#" onclick="showPage('home')" data-en="Home" data-tr="Ana Sayfa">Home</a>
-                    <a href="#" onclick="showPage('privacy')" data-en="Privacy Policy" data-tr="Gizlilik Politikası">Privacy Policy</a>
+                    <a href="index.html" data-en="Home" data-tr="Ana Sayfa">Home</a>
+                    <a href="policies.html" data-en="Policies" data-tr="Politikalar">Policies</a>
                 </div>
                 <div class="footer-section">
                     <h3 data-en="Contact" data-tr="İletişim">Contact</h3>
-                    <p>Email: investrackerapp@gmail.com</p>
-                    <p data-en="Developer: Yiğit Aktüre" data-tr="Geliştirici: Yiğit Aktüre">Developer: Yiğit Aktüre</p>
-                    <p data-en="Designer: Nisa Dost" data-tr="Tasarımcı: Nisa Dost">Designer: Nisa Dost</p>
+                    <div style="display: flex; flex-direction: row;">
+                        <p data-en="Email:" data-tr="E-posta:" style="margin-right: 0.3rem;">Email:</p>
+                        <a href="mailto:investrackerapp@gmail.com" type="Email" target="_blank">investrackerapp@gmail.com</a>
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <p data-en="Developer:" data-tr="Geliştirici:" style="margin-right: 0.3rem;">Developer:</p>
+                        <a href="https://github.com/YigitAkture" target="_blank">Yiğit Aktüre</a>
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <p data-en="Designer:" data-tr="Tasarımcı:" style="margin-right: 0.3rem;">Designer:</p>
+                        <a href="https://github.com/NisaDost" target="_blank">Nisa Dost</a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -632,19 +494,6 @@
             elements.forEach(el => {
                 el.textContent = el.getAttribute(`data-${currentLang}`);
             });
-
-            // Update privacy policy
-            document.getElementById('privacy-en').style.display = currentLang === 'en' ? 'block' : 'none';
-            document.getElementById('privacy-tr').style.display = currentLang === 'tr' ? 'block' : 'none';
-        }
-
-        // Page Navigation
-        function showPage(page) {
-            document.querySelectorAll('.page-content').forEach(p => {
-                p.classList.remove('active');
-            });
-            document.getElementById(`${page}-page`).classList.add('active');
-            window.scrollTo(0, 0);
         }
 
         // Initialize
